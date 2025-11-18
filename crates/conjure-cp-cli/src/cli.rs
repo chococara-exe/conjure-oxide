@@ -6,7 +6,7 @@ use clap_complete::Shell;
 use conjure_cp::solver::SolverFamily;
 use conjure_cp::solver::adaptors::smt::IntTheory;
 
-use crate::{solve, test_solve, parse_test};
+use crate::{parse_test, solve, test_solve};
 
 pub(crate) const DEBUG_HELP_HEADING: Option<&str> = Some("Debug");
 pub(crate) const LOGGING_HELP_HEADING: Option<&str> = Some("Logging & Output");

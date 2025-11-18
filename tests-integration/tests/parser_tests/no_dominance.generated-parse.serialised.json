@@ -35,7 +35,9 @@
                                 "etype": null
                               },
                               {
-                                "Reference": 380
+                                "Reference": {
+                                  "ptr": 1
+                                }
                               }
                             ]
                           },
@@ -46,7 +48,9 @@
                                 "etype": null
                               },
                               {
-                                "Reference": 381
+                                "Reference": {
+                                  "ptr": 2
+                                }
                               }
                             ]
                           }
@@ -85,7 +89,7 @@
   "dominance": null,
   "search_order": null,
   "symbols": {
-    "id": 539,
+    "id": 0,
     "next_machine_name": 0,
     "parent": null,
     "table": [
@@ -94,7 +98,7 @@
           "User": "carbon"
         },
         {
-          "id": 381,
+          "id": 2,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",
@@ -120,7 +124,7 @@
           "User": "cost"
         },
         {
-          "id": 380,
+          "id": 1,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",

@@ -1,12 +1,13 @@
 #![allow(clippy::unwrap_used)]
 mod cli;
+mod parse_test;
 mod print_info_schema;
 mod solve;
 mod test_solve;
-mod parse_test;
 use clap::{CommandFactory, Parser};
 use clap_complete::generate;
 use cli::{Cli, GlobalArgs};
+use parse_test::run_parse_test_command;
 use print_info_schema::run_print_info_schema_command;
 use solve::run_solve_command;
 use std::fs::File;
@@ -14,7 +15,6 @@ use std::io;
 use std::process::exit;
 use std::sync::Arc;
 use test_solve::run_test_solve_command;
-use parse_test::run_parse_test_command;
 
 use conjure_cp_rules as _;
 
