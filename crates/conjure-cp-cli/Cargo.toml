@@ -21,12 +21,6 @@ versions = { workspace = true }
 schemars = { workspace = true }
 glob = { workspace = true }
 tracing-subscriber = { workspace = true }
-tracing = {workspace = true}
-git-version = {workspace = true}
-tempfile = {workspace = true}
-itertools = {workspace = true}
-clap_complete = {workspace = true}
-rayon = {workspace = true}
 toml = "0.9.8"
 serde = { workspace = true, features = ["derive"] }
 tracing = { workspace = true }
