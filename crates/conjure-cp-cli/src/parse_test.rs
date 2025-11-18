@@ -98,7 +98,7 @@ pub fn run_parse_test_command(parse_test_args: Args) -> Result<()> {
         // Parse the file
         match std::panic::catch_unwind(|| parse_essence_file_native(path, context.clone())) {
             Ok(Ok(model)) => {
-                save_model_json(&model, &test_dir, &essence_base, "parse")?;
+                save_model_json(&model, test_dir, essence_base, "parse")?;
                 model
             }
             Ok(Err(e)) => {
@@ -131,8 +131,8 @@ pub fn run_parse_test_command(parse_test_args: Args) -> Result<()> {
                     }
                     if accept {
                         match copy_generated_to_expected(
-                            &test_dir,
-                            &essence_base,
+                            test_dir,
+                            essence_base,
                             "parse",
                             "serialised.json",
                         ) {
@@ -165,8 +165,8 @@ pub fn run_parse_test_command(parse_test_args: Args) -> Result<()> {
             Err(e) => {
                 if accept {
                     match copy_generated_to_expected(
-                        &test_dir,
-                        &essence_base,
+                        test_dir,
+                        essence_base,
                         "parse",
                         "serialised.json",
                     ) {
@@ -212,9 +212,7 @@ fn find_essence_files_recursive_helper(
 
         if path.is_file() {
             if let Some(ext) = path.extension() {
-                if ext == "essence" || ext == "eprime" {
-                    essence_files.push(path);
-                }
+                if ext == "essence" || ext == "eprime" { essence_files.push(path); }
             }
         } else if path.is_dir() {
             find_essence_files_recursive_helper(&path, essence_files)?;
