@@ -1,1 +1,1 @@
-window.SIDEBAR_ITEMS = {"fn":["enumerate_indices","flatten","flatten_enumerate","index_domains"]};
+window.SIDEBAR_ITEMS = {"fn":["enumerate_index_union_indices","enumerate_indices","flatten","flatten_enumerate","index_domains"]};

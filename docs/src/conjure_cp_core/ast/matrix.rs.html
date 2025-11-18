@@ -7,7 +7,7 @@
 <a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>itertools::{Itertools, izip};
 <a href=#8 id=8 data-nosnippet>8</a><span class="kw">use </span>uniplate::Uniplate <span class="kw">as _</span>;
 <a href=#9 id=9 data-nosnippet>9</a>
-<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><span class="kw">crate</span>::ast::{Domain, Range};
+<a href=#10 id=10 data-nosnippet>10</a><span class="kw">use </span><span class="kw">crate</span>::ast::{Domain, DomainOpError, Range};
 <a href=#11 id=11 data-nosnippet>11</a>
 <a href=#12 id=12 data-nosnippet>12</a><span class="kw">use super</span>::{AbstractLiteral, Literal};
 <a href=#13 id=13 data-nosnippet>13</a>
@@ -140,4 +140,23 @@
 <a href=#140 id=140 data-nosnippet>140</a>        }
 <a href=#141 id=141 data-nosnippet>141</a>    })
 <a href=#142 id=142 data-nosnippet>142</a>}
+<a href=#143 id=143 data-nosnippet>143</a>
+<a href=#144 id=144 data-nosnippet>144</a><span class="doccomment">/// See [`enumerate_indices`]. This function zips the two given lists of index domains, performs a
+<a href=#145 id=145 data-nosnippet>145</a>/// union on each pair, and returns an enumerating iterator over the new list of domains.
+<a href=#146 id=146 data-nosnippet>146</a></span><span class="kw">pub fn </span>enumerate_index_union_indices(
+<a href=#147 id=147 data-nosnippet>147</a>    a_domains: Vec&lt;Domain&gt;,
+<a href=#148 id=148 data-nosnippet>148</a>    b_domains: Vec&lt;Domain&gt;,
+<a href=#149 id=149 data-nosnippet>149</a>) -&gt; <span class="prelude-ty">Result</span>&lt;<span class="kw">impl </span>Iterator&lt;Item = Vec&lt;Literal&gt;&gt;, DomainOpError&gt; {
+<a href=#150 id=150 data-nosnippet>150</a>    <span class="kw">if </span>a_domains.len() != b_domains.len() {
+<a href=#151 id=151 data-nosnippet>151</a>        <span class="kw">return </span><span class="prelude-val">Err</span>(DomainOpError::InputWrongType);
+<a href=#152 id=152 data-nosnippet>152</a>    }
+<a href=#153 id=153 data-nosnippet>153</a>    <span class="kw">let </span>idx_domains: <span class="prelude-ty">Result</span>&lt;Vec&lt;<span class="kw">_</span>&gt;, <span class="kw">_</span>&gt; = a_domains
+<a href=#154 id=154 data-nosnippet>154</a>        .iter()
+<a href=#155 id=155 data-nosnippet>155</a>        .zip(b_domains.iter())
+<a href=#156 id=156 data-nosnippet>156</a>        .map(|(a, b)| a.union(b))
+<a href=#157 id=157 data-nosnippet>157</a>        .collect();
+<a href=#158 id=158 data-nosnippet>158</a>    <span class="kw">let </span>idx_domains = idx_domains<span class="question-mark">?</span>;
+<a href=#159 id=159 data-nosnippet>159</a>
+<a href=#160 id=160 data-nosnippet>160</a>    <span class="prelude-val">Ok</span>(enumerate_indices(idx_domains))
+<a href=#161 id=161 data-nosnippet>161</a>}
 </code></pre></div></section></main></body></html>

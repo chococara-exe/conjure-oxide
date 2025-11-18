@@ -4,7 +4,7 @@
 <a href=#4 id=4 data-nosnippet>4</a>
 <a href=#5 id=5 data-nosnippet>5</a><span class="kw">use </span>clap_complete::Shell;
 <a href=#6 id=6 data-nosnippet>6</a><span class="kw">use </span>conjure_cp::solver::SolverFamily;
-<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>conjure_cp::solver::adaptors::smt::IntTheory;
+<a href=#7 id=7 data-nosnippet>7</a><span class="kw">use </span>conjure_cp::solver::adaptors::smt::{IntTheory, MatrixTheory};
 <a href=#8 id=8 data-nosnippet>8</a>
 <a href=#9 id=9 data-nosnippet>9</a><span class="kw">use crate</span>::{parse_test, solve, test_solve};
 <a href=#10 id=10 data-nosnippet>10</a>
@@ -124,36 +124,45 @@
 <a href=#124 id=124 data-nosnippet>124</a>        value_enum,
 <a href=#125 id=125 data-nosnippet>125</a>        default_value_t = IntTheory::Lia,
 <a href=#126 id=126 data-nosnippet>126</a>        global = <span class="bool-val">true</span>,
-<a href=#127 id=127 data-nosnippet>127</a>        help = <span class="string">"SMT integer theory to use (lia | bv)"
+<a href=#127 id=127 data-nosnippet>127</a>        help = <span class="string">"SMT integer theory to use (lia | bv), default = lia"
 <a href=#128 id=128 data-nosnippet>128</a>    </span>)]
 <a href=#129 id=129 data-nosnippet>129</a>    </span><span class="kw">pub </span>smt_int_theory: IntTheory,
 <a href=#130 id=130 data-nosnippet>130</a>
-<a href=#131 id=131 data-nosnippet>131</a>    <span class="doccomment">/// Exit after all comprehensions have been unrolled, printing the number of expressions at that point.
-<a href=#132 id=132 data-nosnippet>132</a>    ///
-<a href=#133 id=133 data-nosnippet>133</a>    /// This is only compatible with the default rewriter.
-<a href=#134 id=134 data-nosnippet>134</a>    ///
-<a href=#135 id=135 data-nosnippet>135</a>    /// This flag is useful to compare how comprehension optimisations, such as expand-ac, effect
-<a href=#136 id=136 data-nosnippet>136</a>    /// rewriting.
-<a href=#137 id=137 data-nosnippet>137</a>    </span><span class="attr">#[arg(long, default_value_t = <span class="bool-val">false</span>, global = <span class="bool-val">true</span>, help_heading = DEBUG_HELP_HEADING)]
-<a href=#138 id=138 data-nosnippet>138</a>    </span><span class="kw">pub </span>exit_after_unrolling: bool,
+<a href=#131 id=131 data-nosnippet>131</a>    <span class="doccomment">/// SMT theory to use for matrices when `--solver smt` is selected
+<a href=#132 id=132 data-nosnippet>132</a>    </span><span class="attr">#[arg(long,
+<a href=#133 id=133 data-nosnippet>133</a>        value_enum,
+<a href=#134 id=134 data-nosnippet>134</a>        default_value_t = MatrixTheory::Arrays,
+<a href=#135 id=135 data-nosnippet>135</a>        global = <span class="bool-val">true</span>,
+<a href=#136 id=136 data-nosnippet>136</a>        help = <span class="string">"SMT matrix theory to use (arrays | atomic), default = arrays"
+<a href=#137 id=137 data-nosnippet>137</a>    </span>)]
+<a href=#138 id=138 data-nosnippet>138</a>    </span><span class="kw">pub </span>smt_matrix_theory: MatrixTheory,
 <a href=#139 id=139 data-nosnippet>139</a>
-<a href=#140 id=140 data-nosnippet>140</a>    <span class="attr">#[arg(long, default_value_t = <span class="bool-val">false</span>, global = <span class="bool-val">true</span>, help_heading = LOGGING_HELP_HEADING)]
-<a href=#141 id=141 data-nosnippet>141</a>    </span><span class="kw">pub </span>run_parser_test: bool,
-<a href=#142 id=142 data-nosnippet>142</a>}
-<a href=#143 id=143 data-nosnippet>143</a>
-<a href=#144 id=144 data-nosnippet>144</a><span class="attr">#[derive(Debug, Clone, Args)]
-<a href=#145 id=145 data-nosnippet>145</a></span><span class="kw">pub struct </span>CompletionArgs {
-<a href=#146 id=146 data-nosnippet>146</a>    <span class="doccomment">/// Shell type for which to generate the completion script
-<a href=#147 id=147 data-nosnippet>147</a>    </span><span class="attr">#[arg(value_enum)]
-<a href=#148 id=148 data-nosnippet>148</a>    </span><span class="kw">pub </span>shell: Shell,
-<a href=#149 id=149 data-nosnippet>149</a>}
-<a href=#150 id=150 data-nosnippet>150</a>
-<a href=#151 id=151 data-nosnippet>151</a><span class="attr">#[derive(Debug, Clone, Copy, clap::ValueEnum)]
-<a href=#152 id=152 data-nosnippet>152</a></span><span class="kw">pub enum </span>ShellTypes {
-<a href=#153 id=153 data-nosnippet>153</a>    Bash,
-<a href=#154 id=154 data-nosnippet>154</a>    Zsh,
-<a href=#155 id=155 data-nosnippet>155</a>    Fish,
-<a href=#156 id=156 data-nosnippet>156</a>    PowerShell,
-<a href=#157 id=157 data-nosnippet>157</a>    Elvish,
+<a href=#140 id=140 data-nosnippet>140</a>    <span class="doccomment">/// Exit after all comprehensions have been unrolled, printing the number of expressions at that point.
+<a href=#141 id=141 data-nosnippet>141</a>    ///
+<a href=#142 id=142 data-nosnippet>142</a>    /// This is only compatible with the default rewriter.
+<a href=#143 id=143 data-nosnippet>143</a>    ///
+<a href=#144 id=144 data-nosnippet>144</a>    /// This flag is useful to compare how comprehension optimisations, such as expand-ac, effect
+<a href=#145 id=145 data-nosnippet>145</a>    /// rewriting.
+<a href=#146 id=146 data-nosnippet>146</a>    </span><span class="attr">#[arg(long, default_value_t = <span class="bool-val">false</span>, global = <span class="bool-val">true</span>, help_heading = DEBUG_HELP_HEADING)]
+<a href=#147 id=147 data-nosnippet>147</a>    </span><span class="kw">pub </span>exit_after_unrolling: bool,
+<a href=#148 id=148 data-nosnippet>148</a>
+<a href=#149 id=149 data-nosnippet>149</a>    <span class="attr">#[arg(long, default_value_t = <span class="bool-val">false</span>, global = <span class="bool-val">true</span>, help_heading = LOGGING_HELP_HEADING)]
+<a href=#150 id=150 data-nosnippet>150</a>    </span><span class="kw">pub </span>run_parser_test: bool,
+<a href=#151 id=151 data-nosnippet>151</a>}
+<a href=#152 id=152 data-nosnippet>152</a>
+<a href=#153 id=153 data-nosnippet>153</a><span class="attr">#[derive(Debug, Clone, Args)]
+<a href=#154 id=154 data-nosnippet>154</a></span><span class="kw">pub struct </span>CompletionArgs {
+<a href=#155 id=155 data-nosnippet>155</a>    <span class="doccomment">/// Shell type for which to generate the completion script
+<a href=#156 id=156 data-nosnippet>156</a>    </span><span class="attr">#[arg(value_enum)]
+<a href=#157 id=157 data-nosnippet>157</a>    </span><span class="kw">pub </span>shell: Shell,
 <a href=#158 id=158 data-nosnippet>158</a>}
+<a href=#159 id=159 data-nosnippet>159</a>
+<a href=#160 id=160 data-nosnippet>160</a><span class="attr">#[derive(Debug, Clone, Copy, clap::ValueEnum)]
+<a href=#161 id=161 data-nosnippet>161</a></span><span class="kw">pub enum </span>ShellTypes {
+<a href=#162 id=162 data-nosnippet>162</a>    Bash,
+<a href=#163 id=163 data-nosnippet>163</a>    Zsh,
+<a href=#164 id=164 data-nosnippet>164</a>    Fish,
+<a href=#165 id=165 data-nosnippet>165</a>    PowerShell,
+<a href=#166 id=166 data-nosnippet>166</a>    Elvish,
+<a href=#167 id=167 data-nosnippet>167</a>}
 </code></pre></div></section></main></body></html>
