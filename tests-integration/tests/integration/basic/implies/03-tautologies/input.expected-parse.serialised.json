@@ -70,7 +70,7 @@
                               },
                               {
                                 "Reference": {
-                                  "ptr": 0
+                                  "ptr": 2
                                 }
                               }
                             ]
@@ -83,7 +83,7 @@
                               },
                               {
                                 "Reference": {
-                                  "ptr": 2
+                                  "ptr": 3
                                 }
                               }
                             ]
@@ -104,7 +104,7 @@
                               },
                               {
                                 "Reference": {
-                                  "ptr": 2
+                                  "ptr": 3
                                 }
                               }
                             ]
@@ -117,7 +117,7 @@
                               },
                               {
                                 "Reference": {
-                                  "ptr": 0
+                                  "ptr": 2
                                 }
                               }
                             ]
@@ -167,7 +167,7 @@
                               },
                               {
                                 "Reference": {
-                                  "ptr": 3
+                                  "ptr": 4
                                 }
                               }
                             ]
@@ -180,7 +180,7 @@
                               },
                               {
                                 "Reference": {
-                                  "ptr": 4
+                                  "ptr": 5
                                 }
                               }
                             ]
@@ -201,7 +201,7 @@
                               },
                               {
                                 "Reference": {
-                                  "ptr": 3
+                                  "ptr": 4
                                 }
                               }
                             ]
@@ -220,7 +220,7 @@
                                   },
                                   {
                                     "Reference": {
-                                      "ptr": 4
+                                      "ptr": 5
                                     }
                                   }
                                 ]
@@ -258,7 +258,7 @@
           "User": "a"
         },
         {
-          "id": 0,
+          "id": 2,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",
@@ -275,7 +275,7 @@
           "User": "b"
         },
         {
-          "id": 3,
+          "id": 4,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",
@@ -292,7 +292,7 @@
           "User": "c"
         },
         {
-          "id": 4,
+          "id": 5,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",
@@ -326,7 +326,7 @@
           "User": "y"
         },
         {
-          "id": 4,
+          "id": 378,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",
@@ -343,7 +343,7 @@
           "User": "z"
         },
         {
-          "id": 2,
+          "id": 3,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",

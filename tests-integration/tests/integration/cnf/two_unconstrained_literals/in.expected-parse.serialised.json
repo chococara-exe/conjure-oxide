@@ -21,7 +21,7 @@
           "User": "x"
         },
         {
-          "id": 0,
+          "id": 127,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",
@@ -38,7 +38,7 @@
           "User": "y"
         },
         {
-          "id": 1,
+          "id": 128,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",

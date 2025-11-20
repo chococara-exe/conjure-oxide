@@ -27,7 +27,7 @@
                     },
                     {
                       "Reference": {
-                        "ptr": 0
+                        "ptr": 1
                       }
                     }
                   ]
@@ -64,7 +64,7 @@
           "User": "x"
         },
         {
-          "id": 0,
+          "id": 1,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",

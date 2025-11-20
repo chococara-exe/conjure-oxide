@@ -8,7 +8,7 @@
       },
       [
         {
-          "Eq": [
+          "Leq": [
             {
               "clean": false,
               "etype": null
@@ -29,44 +29,28 @@
                       "Matrix": [
                         [
                           {
-                            "Abs": [
+                            "Atomic": [
                               {
                                 "clean": false,
                                 "etype": null
                               },
                               {
-                                "Atomic": [
-                                  {
-                                    "clean": false,
-                                    "etype": null
-                                  },
-                                  {
-                                    "Reference": {
-                                      "ptr": 1
-                                    }
-                                  }
-                                ]
+                                "Reference": {
+                                  "ptr": 1
+                                }
                               }
                             ]
                           },
                           {
-                            "Abs": [
+                            "Atomic": [
                               {
                                 "clean": false,
                                 "etype": null
                               },
                               {
-                                "Atomic": [
-                                  {
-                                    "clean": false,
-                                    "etype": null
-                                  },
-                                  {
-                                    "Reference": {
-                                      "ptr": 2
-                                    }
-                                  }
-                                ]
+                                "Reference": {
+                                  "ptr": 2
+                                }
                               }
                             ]
                           }
@@ -92,7 +76,7 @@
                 },
                 {
                   "Literal": {
-                    "Int": 10
+                    "Int": 15
                   }
                 }
               ]
@@ -111,33 +95,7 @@
     "table": [
       [
         {
-          "User": "x"
-        },
-        {
-          "id": 1,
-          "kind": {
-            "DecisionVariable": {
-              "category": "Decision",
-              "domain": {
-                "Int": [
-                  {
-                    "Bounded": [
-                      -5,
-                      5
-                    ]
-                  }
-                ]
-              }
-            }
-          },
-          "name": {
-            "User": "x"
-          }
-        }
-      ],
-      [
-        {
-          "User": "y"
+          "User": "carbon"
         },
         {
           "id": 2,
@@ -148,8 +106,8 @@
                 "Int": [
                   {
                     "Bounded": [
-                      -5,
-                      5
+                      1,
+                      10
                     ]
                   }
                 ]
@@ -157,7 +115,33 @@
             }
           },
           "name": {
-            "User": "y"
+            "User": "carbon"
+          }
+        }
+      ],
+      [
+        {
+          "User": "cost"
+        },
+        {
+          "id": 1,
+          "kind": {
+            "DecisionVariable": {
+              "category": "Decision",
+              "domain": {
+                "Int": [
+                  {
+                    "Bounded": [
+                      1,
+                      10
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "name": {
+            "User": "cost"
           }
         }
       ]

@@ -8,6 +8,8 @@ use std::fs;
 use std::path::PathBuf;
 use std::sync::{Arc, RwLock};
 
+/// This test file is specifially for testing the native parser
+
 fn copy_generated_to_expected(
     path: &str,
     test_name: &str,
@@ -59,8 +61,8 @@ pub fn run_parse_test_command(parse_test_args: Args) -> Result<()> {
 
     println!("Found {} essence files to test", essence_files.len());
 
-    let mut passed = 0;
-    let mut failed = 0;
+    let mut passed: Vec<String> = Vec::new();
+    let mut failed: Vec<String> = Vec::new();
 
     // Iterate through all test files
     for essence_file in essence_files {
@@ -77,7 +79,7 @@ pub fn run_parse_test_command(parse_test_args: Args) -> Result<()> {
                     Err(e) => {
                         println!(
                             "{}: Failed to parse config.toml: {}",
-                            essence_file.display(),
+                            path.to_string(),
                             e
                         );
                         true
@@ -90,7 +92,7 @@ pub fn run_parse_test_command(parse_test_args: Args) -> Result<()> {
         if !use_native_parser {
             println!(
                 "{}: Skipped because native parser disabled in config.toml",
-                essence_file.display()
+                path.to_string()
             );
             continue;
         }
@@ -102,8 +104,8 @@ pub fn run_parse_test_command(parse_test_args: Args) -> Result<()> {
                 model
             }
             Ok(Err(e)) => {
-                println!("{}: Parse error: {}", essence_file.display(), e);
-                failed += 1;
+                println!("{}: Parse error: {}", path.to_string(), e);
+                failed.push(path.to_string());
                 continue;
             }
             Err(payload) => {
@@ -114,19 +116,19 @@ pub fn run_parse_test_command(parse_test_args: Args) -> Result<()> {
                 } else {
                     "Parser panicked: non-string payload".to_string()
                 };
-                println!("{}: Parser panicked: {}", essence_file.display(), panic_msg);
-                failed += 1;
+                println!("{}: Parser panicked: {}", path.to_string(), panic_msg);
+                failed.push(path.to_string());
                 continue;
             }
         };
 
         // Find expected json parse in test directory
         match read_model_json(&context, test_dir, essence_base, "expected", "parse") {
-            Ok(_) => match compare_json_file(test_dir, essence_base) {
+            Ok(_) => match compare_json_file(test_dir, essence_base, accept) {
                 Ok(equal) => {
                     if equal {
-                        println!("{}: Passed", essence_file.display());
-                        passed += 1;
+                        println!("{}: Passed", path.to_string());
+                        passed.push(path.to_string());
                         continue;
                     }
                     if accept {
@@ -136,30 +138,30 @@ pub fn run_parse_test_command(parse_test_args: Args) -> Result<()> {
                             "parse",
                             "serialised.json",
                         ) {
-                            Ok(_) => passed += 1,
+                            Ok(_) => passed.push(path.to_string()),
                             Err(e) => {
                                 println!(
                                     "Failed to save expected model for {}: {}",
                                     essence_base, e
                                 );
-                                failed += 1;
+                                failed.push(path.to_string());
                             }
                         }
                     } else {
                         println!(
                             "{}: Parsed model doesn't match expected",
-                            essence_file.display()
+                            path.to_string()
                         );
-                        failed += 1;
+                        failed.push(path.to_string());
                     }
                 }
                 Err(e) => {
                     println!(
                         "{}: Error comparing expected and generated results: {}",
-                        essence_file.display(),
+                        path.to_string(),
                         e
                     );
-                    failed += 1;
+                    failed.push(path.to_string());
                 }
             },
             Err(e) => {
@@ -170,26 +172,33 @@ pub fn run_parse_test_command(parse_test_args: Args) -> Result<()> {
                         "parse",
                         "serialised.json",
                     ) {
-                        Ok(_) => passed += 1,
+                        Ok(_) => passed.push(path.to_string()),
                         Err(e) => {
                             println!("Failed to save expected model for {}: {}", essence_base, e);
-                            failed += 1;
+                            failed.push(path.to_string());
                         }
                     }
                 } else {
                     println!(
                         "{}: Expected model could not be found: {}",
-                        essence_file.display(),
+                        path.to_string(),
                         e
                     );
-                    failed += 1;
+                    failed.push(path.to_string());
                     continue;
                 }
             }
         }
     }
 
-    println!("\nParser tests: {} passed, {} failed", passed, failed);
+    // Summary of results
+    println!("\nParser test results:");
+
+    for f in &failed {
+        println!("  FAILED: {}", f);
+    }
+
+    println!("\nParser tests: {} passed, {} failed", passed.len(), failed.len());
 
     Ok(())
 }
@@ -222,7 +231,7 @@ fn find_essence_files_recursive_helper(
     Ok(())
 }
 
-fn compare_json_file(test_dir: &str, base: &str) -> Result<bool> {
+fn compare_json_file(test_dir: &str, base: &str, accept: bool) -> Result<bool> {
     let gen_path = format!("{}/{}.generated-parse.serialised.json", test_dir, base);
     let exp_path = format!("{}/{}.expected-parse.serialised.json", test_dir, base);
 
@@ -277,7 +286,7 @@ fn compare_json_file(test_dir: &str, base: &str) -> Result<bool> {
     }
 
     // Check for line differences and display them
-    if !diffs.is_empty() {
+    if !diffs.is_empty() || !accept {
         println!("{}: Parsed result does not match expected (expected | generated)", gen_path);
         for (i, gs, es) in diffs {
             println!("{:6} |    {} | {}", i + 1, gs.trim(), es.trim());

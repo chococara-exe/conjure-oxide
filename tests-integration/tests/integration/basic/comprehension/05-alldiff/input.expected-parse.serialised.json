@@ -21,7 +21,7 @@
                 },
                 {
                   "Reference": {
-                    "ptr": 0
+                    "ptr": 3
                   }
                 }
               ]
@@ -68,7 +68,7 @@
                                           },
                                           {
                                             "Reference": {
-                                              "ptr": 2
+                                              "ptr": 404
                                             }
                                           }
                                         ]
@@ -116,7 +116,7 @@
                                 "User": "x"
                               },
                               {
-                                "id": 2,
+                                "id": 404,
                                 "kind": {
                                   "DecisionVariable": {
                                     "category": "Decision",
@@ -162,7 +162,7 @@
                                   },
                                   {
                                     "Reference": {
-                                      "ptr": 1
+                                      "ptr": 405
                                     }
                                   }
                                 ]
@@ -180,7 +180,7 @@
                                 "User": "x"
                               },
                               {
-                                "id": 1,
+                                "id": 405,
                                 "kind": {
                                   "Given": {
                                     "Int": [
@@ -223,7 +223,7 @@
           "User": "x"
         },
         {
-          "id": 0,
+          "id": 3,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",

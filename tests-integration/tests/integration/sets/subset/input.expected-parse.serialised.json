@@ -34,7 +34,7 @@
                 },
                 {
                   "Reference": {
-                    "ptr": 0
+                    "ptr": 2
                   }
                 }
               ]
@@ -56,7 +56,7 @@
           "User": "a"
         },
         {
-          "id": 0,
+          "id": 2,
           "kind": {
             "ValueLetting": {
               "AbstractLiteral": [

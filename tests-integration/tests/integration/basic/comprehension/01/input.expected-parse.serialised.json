@@ -41,7 +41,7 @@
                             "User": "i"
                           },
                           {
-                            "id": 2,
+                            "id": 401,
                             "kind": {
                               "DecisionVariable": {
                                 "category": "Decision",
@@ -99,7 +99,7 @@
                                       },
                                       {
                                         "Reference": {
-                                          "ptr": 0
+                                          "ptr": 400
                                         }
                                       }
                                     ]
@@ -113,7 +113,7 @@
                                         },
                                         {
                                           "Reference": {
-                                            "ptr": 1
+                                            "ptr": 402
                                           }
                                         }
                                       ]
@@ -129,7 +129,7 @@
                                   },
                                   {
                                     "Reference": {
-                                      "ptr": 1
+                                      "ptr": 402
                                     }
                                   }
                                 ]
@@ -149,7 +149,7 @@
                             "User": "i"
                           },
                           {
-                            "id": 1,
+                            "id": 402,
                             "kind": {
                               "Given": {
                                 "Int": [
@@ -190,7 +190,7 @@
           "User": "m"
         },
         {
-          "id": 0,
+          "id": 400,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",

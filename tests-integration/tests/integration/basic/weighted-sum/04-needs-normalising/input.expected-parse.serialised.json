@@ -109,7 +109,7 @@
                                                                                       },
                                                                                       {
                                                                                         "Reference": {
-                                                                                          "ptr": 0
+                                                                                          "ptr": 1
                                                                                         }
                                                                                       }
                                                                                     ]
@@ -181,7 +181,7 @@
                                                                                                                   },
                                                                                                                   {
                                                                                                                     "Reference": {
-                                                                                                                      "ptr": 1
+                                                                                                                      "ptr": 2
                                                                                                                     }
                                                                                                                   }
                                                                                                                 ]
@@ -323,7 +323,7 @@
                                                                             },
                                                                             {
                                                                               "Reference": {
-                                                                                "ptr": 0
+                                                                                "ptr": 1
                                                                               }
                                                                             }
                                                                           ]
@@ -394,7 +394,7 @@
                                                           },
                                                           {
                                                             "Reference": {
-                                                              "ptr": 1
+                                                              "ptr": 2
                                                             }
                                                           }
                                                         ]
@@ -450,7 +450,7 @@
                                             },
                                             {
                                               "Reference": {
-                                                "ptr": 1
+                                                "ptr": 2
                                               }
                                             }
                                           ]
@@ -526,7 +526,7 @@
           "User": "x"
         },
         {
-          "id": 0,
+          "id": 1,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",
@@ -552,7 +552,7 @@
           "User": "y"
         },
         {
-          "id": 1,
+          "id": 2,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",
@@ -578,7 +578,7 @@
           "User": "z"
         },
         {
-          "id": 2,
+          "id": 246,
           "kind": {
             "DecisionVariable": {
               "category": "Decision",

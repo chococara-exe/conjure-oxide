@@ -21,7 +21,7 @@
           "User": "a"
         },
         {
-          "id": 3,
+          "id": 65,
           "kind": {
             "ValueLetting": {
               "AbstractLiteral": [
@@ -39,7 +39,7 @@
                         },
                         {
                           "Reference": {
-                            "ptr": 0
+                            "ptr": 62
                           }
                         }
                       ]
@@ -52,7 +52,7 @@
                         },
                         {
                           "Reference": {
-                            "ptr": 1
+                            "ptr": 63
                           }
                         }
                       ]
@@ -135,7 +135,7 @@
                                       },
                                       {
                                         "Reference": {
-                                          "ptr": 0
+                                          "ptr": 62
                                         }
                                       }
                                     ]
@@ -148,7 +148,7 @@
                                       },
                                       {
                                         "Reference": {
-                                          "ptr": 1
+                                          "ptr": 63
                                         }
                                       }
                                     ]
@@ -181,7 +181,7 @@
                             },
                             {
                               "Reference": {
-                                "ptr": 0
+                                "ptr": 62
                               }
                             }
                           ]
@@ -203,7 +203,7 @@
           "User": "b"
         },
         {
-          "id": 0,
+          "id": 62,
           "kind": {
             "ValueLetting": {
               "Atomic": [
@@ -229,7 +229,7 @@
           "User": "c"
         },
         {
-          "id": 2,
+          "id": 64,
           "kind": {
             "ValueLetting": {
               "AbstractLiteral": [
@@ -293,7 +293,7 @@
           "User": "m"
         },
         {
-          "id": 1,
+          "id": 63,
           "kind": {
             "ValueLetting": {
               "Atomic": [
@@ -319,7 +319,7 @@
           "User": "z"
         },
         {
-          "id": 4,
+          "id": 66,
           "kind": {
             "ValueLetting": {
               "AbstractLiteral": [
@@ -343,7 +343,7 @@
                             },
                             {
                               "Reference": {
-                                "ptr": 0
+                                "ptr": 62
                               }
                             }
                           ]
@@ -356,7 +356,7 @@
                             },
                             {
                               "Reference": {
-                                "ptr": 1
+                                "ptr": 63
                               }
                             }
                           ]
@@ -377,7 +377,7 @@
                             },
                             {
                               "Reference": {
-                                "ptr": 0
+                                "ptr": 62
                               }
                             }
                           ]
@@ -390,7 +390,7 @@
                             },
                             {
                               "Reference": {
-                                "ptr": 1
+                                "ptr": 63
                               }
                             }
                           ]
